@@ -10,75 +10,39 @@
 - **页面操作**：读取、创建和更新Confluence页面
 - **内容搜索**：在Confluence空间中搜索内容
 
-## Cline安装
+## 🚀 安装与配置
 
-这个MCP服务器适用于**Cline**（在VSCode/Cursor中）或**Claude Desktop**。
+### 📋 系统要求
 
-### 选项1：Cline（VSCode/Cursor扩展）
+- **Node.js**: 16.0 或更高版本
+- **Confluence访问权限**: 需要有效的Confluence账户访问权限
 
-1. **克隆仓库**：
+### 📦 安装步骤
 
 ```bash
+# 克隆项目
 git clone https://github.com/sansong089/confluence-mcp-server.git
 cd confluence-mcp-server
-```
 
-2. **安装依赖并构建**：
-
-```bash
+# 安装依赖
 npm install
+
+# 构建项目
 npm run build
 ```
 
-3. **配置Cline MCP设置**：
+### ⚙️ 配置
 
-在VSCode设置中添加服务器到您的Cline MCP配置：
+#### Claude Desktop
 
-```json
-{
-  "cline.mcp.remoteServers": {
-    "confluence-mcp-server": {
-      "command": "node",
-      "args": ["/绝对路径/to/confluence-mcp-server/build/index.js"],
-      "env": {
-        "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
-        "CONFLUENCE_USERNAME": "your-email@example.com",
-        "CONFLUENCE_PASSWORD": "your-password"
-      }
-    }
-  }
-}
-```
-
-### 选项2：Claude Desktop
-
-1. **克隆仓库**：
-
-```bash
-git clone https://github.com/sansong089/confluence-mcp-server.git
-cd confluence-mcp-server
-```
-
-2. **安装依赖并构建**：
-
-```bash
-npm install
-npm run build
-```
-
-3. **配置Claude Desktop**：
-
-编辑您的Claude Desktop配置文件：
-
-- **macOS**：`~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Windows**：`%APPDATA%\Claude\claude_desktop_config.json`
+在 `claude_desktop_config.json` 中添加：
 
 ```json
 {
   "mcpServers": {
     "confluence-mcp-server": {
       "command": "node",
-      "args": ["/绝对路径/to/confluence-mcp-server/build/index.js"],
+      "args": ["C:\\path\\to\\your\\confluence-mcp-server\\build\\confluence-server\\index.js"],
       "env": {
         "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
         "CONFLUENCE_USERNAME": "your-email@example.com",
@@ -89,58 +53,32 @@ npm run build
 }
 ```
 
-### 环境变量（两种选项都需要）
+#### Cline
 
-所需的环境变量：
+在 Cline MCP 设置中添加：
 
-- `CONFLUENCE_URL`：您的Confluence实例URL（例如：`https://company.atlassian.net`）
-- `CONFLUENCE_USERNAME`：您的Atlassian账户邮箱
-- `CONFLUENCE_PASSWORD`：您的Atlassian账户密码
+```json
+{
+  "mcpServers": {
+    "confluence-mcp-server": {
+      "command": "node",
+      "args": ["/path/to/your/confluence-mcp-server/build/confluence-server/index.js"],
+      "env": {
+        "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
+        "CONFLUENCE_USERNAME": "your-email@example.com",
+        "CONFLUENCE_PASSWORD": "your-password"
+      }
+    }
+  }
+}
+```
 
-### 验证
+**注意**：请将路径替换为构建项目后 `build/confluence-server/index.js` 文件的实际路径。
+
+### ✅ 验证
 
 设置完成后，让AI助手列出可用工具。您应该看到以Confluence相关的工具，如`get_spaces`、`create_page`等。
 
-## 安装说明
-
-### 环境要求
-
-- Node.js 16 或更高版本
-- 访问Confluence实例的权限
-
-### 安装依赖
-
-```bash
-npm install
-```
-
-### 构建项目
-
-```bash
-npm run build
-```
-
-## 配置说明
-
-设置所需的环境变量：
-
-```bash
-export CONFLUENCE_URL="https://your-confluence-instance.atlassian.net"
-export CONFLUENCE_USERNAME="your-username"
-export CONFLUENCE_PASSWORD="your-api-token"
-```
-
-> **注意**：使用您的Atlassian账户邮箱作为用户名和密码进行身份验证。某些Confluence实例可能需要API令牌，请检查您的Confluence认证方式。
-
-## 使用方法
-
-### 启动服务器
-
-```bash
-npm start
-```
-
-服务器将启动并监听stdio中的MCP协议消息。
 
 ### 可用工具
 
@@ -187,7 +125,7 @@ npm start
 
 ```
 src/
-└── mcp-server/              # MCP协议处理
+└── confluence-server/       # MCP协议处理
   └── index.ts               # 主服务器实现
 ```
 
@@ -221,42 +159,6 @@ npm run build
 - 网络超时
 - API错误
 
-## 免责声明
-
-### ⚠️ 重要安全警告
-
-**本项目实现简单，仅包含基础安全控制且无高级权限限制，主要设计用于易于安装和测试目的。**
-
-#### ⚠️ 关键限制
-- **无权限验证**：工具直接执行操作而不检查用户在Confluence中的权限
-- **无访问控制**：配置的任何用户都可以执行所有操作（创建、更新、删除）
-- **简单身份验证**：仅使用基础HTTP身份验证
-
-#### ⚠️ AI助手使用限制
-**本工具提供的修改和删除操作绝对不可用于AI助手的自动批准。**所有写入操作（创建、更新、删除）都需要：
-
-- **人工审核**：每个操作都应由人工操作员审核
-- **明确批准**：执行任何破坏性操作前需要人工确认
-- **数据备份**：执行任何操作前确保Confluence内容已备份
-
-#### ⚠️ 数据安全风险
-- **潜在数据丢失**：不当使用可能导致意外的内容删除或损坏
-- **无回滚机制**：某些操作可能无法通过此工具轻松撤销
-- **错误恢复有限**：基础错误处理可能无法覆盖所有边缘情况
-
-#### ⚠️ 责任声明
-用户对以下内容承担全部责任：
-- 了解每个操作的潜在影响
-- 确保所有更改都有适当的授权
-- 维护关键内容的备份
-- 遵守组织的数据管理政策
-
-**使用本工具即表示您承认这些限制，并接受因使用此工具而产生的任何后果的全部责任。**
-
-## 许可证
-
-本项目采用MIT许可证。
-
 ## 贡献指南
 
 1. Fork本仓库
@@ -265,11 +167,30 @@ npm run build
 4. 如适用，添加测试
 5. 提交拉取请求
 
-## 支持说明
+## ⚠️ 重要免责声明
 
-如果您遇到问题或需要帮助：
+**特别警告：修改删除操作绝对不得授权给AI助手自动执行**
 
-1. 检查环境变量是否正确设置
-2. 验证Confluence实例URL和凭据
-3. 确保您在Confluence中具有必要的权限
-4. 检查服务器日志以获取详细错误信息
+**请仔细阅读以下条款：**
+
+1. **使用限制**
+   - 本软件仅供学习、开发和测试使用
+   - 请勿在未经授权的生产环境中使用
+
+2. **风险提示**
+   - 使用者需自行承担所有操作后果
+   - 包括但不限于数据丢失、服务中断等风险
+
+3. **安全警告**
+   - **修改删除操作绝对不得授权给AI助手自动执行**
+   - 所有破坏性操作必须经过人工确认和审核
+   - 具有Confluence管理权限的操作可能导致严重的安全风险
+   - 请在安全可控的环境中运行
+
+4. **免责条款**
+   - 本项目按"原样"提供，不提供任何明示或暗示的保证
+   - 作者不对使用本软件造成的任何损害承担责任
+
+**使用前请确保您已理解并接受以上条款。**
+
+--------
