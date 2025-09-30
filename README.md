@@ -41,6 +41,10 @@ export CONFLUENCE_PASSWORD="your-api-token"
 
 > **Note**: Use your Atlassian account email as username and an API token as password. You can create an API token from your Atlassian account settings.
 
+## Disclaimer
+
+**Important Warning**: This project implements a simple solution with no complex permission restrictions, designed for easy installation. Any modification or deletion operations provided by this tool should NOT be used for automatic approval by AI assistants. Manual review and approval are required for all write operations to ensure data safety and prevent unintended changes.
+
 ## Usage
 
 ### Starting the Server
