@@ -2,6 +2,8 @@
 
 An MCP (Model Context Protocol) server provides tools for managing Confluence pages, enabling AI assistants to interact with Confluence content programmatically.
 
+> **中文文档** | [中文版 README](./README-CN.md)
+
 ## Features
 
 - **Space Management**: Get all Confluence spaces and their pages
@@ -94,9 +96,8 @@ The server will start and listen on stdio for MCP protocol messages.
 
 ```
 src/
-├── index.ts                 # Main server implementation
-├── mcp-server/              # MCP protocol handling
-└── tools/                   # Tool implementations
+└── mcp-server/              # MCP协议处理
+  └── index.ts               # 主服务器实现
 ```
 
 ### Building

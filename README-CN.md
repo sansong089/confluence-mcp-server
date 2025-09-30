@@ -2,6 +2,8 @@
 
 一个基于MCP（模型上下文协议）服务器，为Confluence页面管理提供工具支持，使AI助手能够以编程方式与Confluence内容交互。
 
+> **English** | [英文版 README](./README.md)
+
 ## 功能特性
 
 - **空间管理**：获取所有Confluence空间及其页面
@@ -94,8 +96,8 @@ npm start
 
 ```
 src/
-├── index.ts                 # 主服务器实现
 └── mcp-server/              # MCP协议处理
+  └── index.ts               # 主服务器实现
 ```
 
 ### 构建
