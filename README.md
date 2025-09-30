@@ -41,38 +41,6 @@ export CONFLUENCE_PASSWORD="your-api-token"
 
 > **Note**: Use your Atlassian account email as username and an API token as password. You can create an API token from your Atlassian account settings.
 
-## Disclaimer
-
-### ⚠️ Important Safety Warning
-
-**This project implements a simple solution with minimal security controls and no advanced permission restrictions, designed primarily for easy installation and testing purposes.**
-
-#### ⚠️ Critical Limitations
-- **No Permission Validation**: The tool performs operations directly without checking user permissions on Confluence
-- **No Access Controls**: Any configured user can perform all operations (create, update, delete)
-- **Simple Authentication**: Uses basic HTTP authentication only
-
-#### ⚠️ AI Assistant Usage Restrictions
-**The modification and deletion operations provided by this tool MUST NOT be used for automatic approval by AI assistants.** All write operations (create, update, delete) require:
-
-- **Manual Human Review**: Each operation should be reviewed by a human operator
-- **Explicit Approval**: Human confirmation before executing any destructive operations
-- **Data Backup**: Ensure Confluence content is backed up before any operations
-
-#### ⚠️ Data Safety Risks
-- **Potential Data Loss**: Incorrect usage may result in accidental content deletion or corruption
-- **No Rollback**: Some operations may not be easily reversible through this tool
-- **Limited Error Recovery**: Basic error handling may not cover all edge cases
-
-#### ⚠️ Responsibility
-Users are solely responsible for:
-- Understanding the implications of each operation
-- Ensuring proper authorization for all changes
-- Maintaining backups of critical content
-- Complying with their organization's data management policies
-
-**By using this tool, you acknowledge these limitations and accept full responsibility for any consequences arising from its use.**
-
 ## Usage
 
 ### Starting the Server
@@ -161,6 +129,38 @@ The server provides user-friendly error messages for common issues:
 - Invalid parameters
 - Network timeouts
 - API errors
+
+## Disclaimer
+
+### ⚠️ Important Safety Warning
+
+**This project implements a simple solution with minimal security controls and no advanced permission restrictions, designed primarily for easy installation and testing purposes.**
+
+#### ⚠️ Critical Limitations
+- **No Permission Validation**: The tool performs operations directly without checking user permissions on Confluence
+- **No Access Controls**: Any configured user can perform all operations (create, update, delete)
+- **Simple Authentication**: Uses basic HTTP authentication only
+
+#### ⚠️ AI Assistant Usage Restrictions
+**The modification and deletion operations provided by this tool MUST NOT be used for automatic approval by AI assistants.** All write operations (create, update, delete) require:
+
+- **Manual Human Review**: Each operation should be reviewed by a human operator
+- **Explicit Approval**: Human confirmation before executing any destructive operations
+- **Data Backup**: Ensure Confluence content is backed up before any operations
+
+#### ⚠️ Data Safety Risks
+- **Potential Data Loss**: Incorrect usage may result in accidental content deletion or corruption
+- **No Rollback**: Some operations may not be easily reversible through this tool
+- **Limited Error Recovery**: Basic error handling may not cover all edge cases
+
+#### ⚠️ Responsibility
+Users are solely responsible for:
+- Understanding the implications of each operation
+- Ensuring proper authorization for all changes
+- Maintaining backups of critical content
+- Complying with their organization's data management policies
+
+**By using this tool, you acknowledge these limitations and accept full responsibility for any consequences arising from its use.**
 
 ## License
 
