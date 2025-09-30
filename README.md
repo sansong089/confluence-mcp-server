@@ -10,6 +10,97 @@ An MCP (Model Context Protocol) server provides tools for managing Confluence pa
 - **Page Operations**: Read, create, and update Confluence pages
 - **Content Search**: Search for content within Confluence spaces
 
+## Cline Installation
+
+This MCP server is designed to work with **Cline** (in VSCode/Cursor) or **Claude Desktop**.
+
+### Option 1: Cline (VSCode/Cursor Extension)
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/sansong089/confluence-mcp-server.git
+cd confluence-mcp-server
+```
+
+2. **Install dependencies and build**:
+
+```bash
+npm install
+npm run build
+```
+
+3. **Configure Cline MCP settings**:
+
+Add the server to your Cline MCP configuration (usually in VSCode settings):
+
+```json
+{
+  "cline.mcp.remoteServers": {
+    "confluence-mcp-server": {
+      "command": "node",
+      "args": ["/absolute/path/to/confluence-mcp-server/build/index.js"],
+      "env": {
+        "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
+        "CONFLUENCE_USERNAME": "your-email@example.com",
+        "CONFLUENCE_PASSWORD": "your-api-token"
+      }
+    }
+  }
+}
+```
+
+### Option 2: Claude Desktop
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/sansong089/confluence-mcp-server.git
+cd confluence-mcp-server
+```
+
+2. **Install dependencies and build**:
+
+```bash
+npm install
+npm run build
+```
+
+3. **Configure Claude Desktop**:
+
+Edit your Claude Desktop configuration file:
+
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "confluence-mcp-server": {
+      "command": "node",
+      "args": ["/absolute/path/to/confluence-mcp-server/build/index.js"],
+      "env": {
+        "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
+        "CONFLUENCE_USERNAME": "your-email@example.com",
+        "CONFLUENCE_PASSWORD": "your-api-token"
+      }
+    }
+  }
+}
+```
+
+### Environment Variables (Both Options)
+
+Required environment variables:
+
+- `CONFLUENCE_URL`: Your Confluence instance URL (e.g., `https://company.atlassian.net`)
+- `CONFLUENCE_USERNAME`: Your Atlassian account email
+- `CONFLUENCE_PASSWORD`: Your Atlassian API token (create at https://id.atlassian.com/manage-profile/security/api-tokens)
+
+### Verification
+
+After setup, ask your AI assistant to list available tools. You should see Confluence-related tools like `get_spaces`, `create_page`, etc.
+
 ## Installation
 
 ### Prerequisites

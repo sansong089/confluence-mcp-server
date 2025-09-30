@@ -10,6 +10,97 @@
 - **页面操作**：读取、创建和更新Confluence页面
 - **内容搜索**：在Confluence空间中搜索内容
 
+## Cline安装
+
+这个MCP服务器适用于**Cline**（在VSCode/Cursor中）或**Claude Desktop**。
+
+### 选项1：Cline（VSCode/Cursor扩展）
+
+1. **克隆仓库**：
+
+```bash
+git clone https://github.com/sansong089/confluence-mcp-server.git
+cd confluence-mcp-server
+```
+
+2. **安装依赖并构建**：
+
+```bash
+npm install
+npm run build
+```
+
+3. **配置Cline MCP设置**：
+
+在VSCode设置中添加服务器到您的Cline MCP配置：
+
+```json
+{
+  "cline.mcp.remoteServers": {
+    "confluence-mcp-server": {
+      "command": "node",
+      "args": ["/绝对路径/to/confluence-mcp-server/build/index.js"],
+      "env": {
+        "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
+        "CONFLUENCE_USERNAME": "your-email@example.com",
+        "CONFLUENCE_PASSWORD": "your-api-token"
+      }
+    }
+  }
+}
+```
+
+### 选项2：Claude Desktop
+
+1. **克隆仓库**：
+
+```bash
+git clone https://github.com/sansong089/confluence-mcp-server.git
+cd confluence-mcp-server
+```
+
+2. **安装依赖并构建**：
+
+```bash
+npm install
+npm run build
+```
+
+3. **配置Claude Desktop**：
+
+编辑您的Claude Desktop配置文件：
+
+- **macOS**：`~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**：`%APPDATA%\Claude\claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "confluence-mcp-server": {
+      "command": "node",
+      "args": ["/绝对路径/to/confluence-mcp-server/build/index.js"],
+      "env": {
+        "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
+        "CONFLUENCE_USERNAME": "your-email@example.com",
+        "CONFLUENCE_PASSWORD": "your-api-token"
+      }
+    }
+  }
+}
+```
+
+### 环境变量（两种选项都需要）
+
+所需的环境变量：
+
+- `CONFLUENCE_URL`：您的Confluence实例URL（例如：`https://company.atlassian.net`）
+- `CONFLUENCE_USERNAME`：您的Atlassian账户邮箱
+- `CONFLUENCE_PASSWORD`：您的Atlassian API令牌（在 https://id.atlassian.com/manage-profile/security/api-tokens 创建）
+
+### 验证
+
+设置完成后，让AI助手列出可用工具。您应该看到以Confluence相关的工具，如`get_spaces`、`create_page`等。
+
 ## 安装说明
 
 ### 环境要求
