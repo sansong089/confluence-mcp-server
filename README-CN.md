@@ -43,7 +43,7 @@ npm run build
       "env": {
         "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
         "CONFLUENCE_USERNAME": "your-email@example.com",
-        "CONFLUENCE_PASSWORD": "your-api-token"
+        "CONFLUENCE_PASSWORD": "your-password"
       }
     }
   }
@@ -82,7 +82,7 @@ npm run build
       "env": {
         "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
         "CONFLUENCE_USERNAME": "your-email@example.com",
-        "CONFLUENCE_PASSWORD": "your-api-token"
+        "CONFLUENCE_PASSWORD": "your-password"
       }
     }
   }
@@ -95,7 +95,7 @@ npm run build
 
 - `CONFLUENCE_URL`：您的Confluence实例URL（例如：`https://company.atlassian.net`）
 - `CONFLUENCE_USERNAME`：您的Atlassian账户邮箱
-- `CONFLUENCE_PASSWORD`：您的Atlassian API令牌（在 https://id.atlassian.com/manage-profile/security/api-tokens 创建）
+- `CONFLUENCE_PASSWORD`：您的Atlassian账户密码
 
 ### 验证
 
@@ -130,7 +130,7 @@ export CONFLUENCE_USERNAME="your-username"
 export CONFLUENCE_PASSWORD="your-api-token"
 ```
 
-> **注意**：使用您的Atlassian账户邮箱作为用户名，API令牌作为密码。您可以在Atlassian账户设置中创建API令牌。
+> **注意**：使用您的Atlassian账户邮箱作为用户名和密码进行身份验证。某些Confluence实例可能需要API令牌，请检查您的Confluence认证方式。
 
 ## 使用方法
 

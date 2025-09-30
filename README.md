@@ -43,7 +43,7 @@ Add the server to your Cline MCP configuration (usually in VSCode settings):
       "env": {
         "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
         "CONFLUENCE_USERNAME": "your-email@example.com",
-        "CONFLUENCE_PASSWORD": "your-api-token"
+        "CONFLUENCE_PASSWORD": "your-password"
       }
     }
   }
@@ -82,7 +82,7 @@ Edit your Claude Desktop configuration file:
       "env": {
         "CONFLUENCE_URL": "https://your-confluence-instance.atlassian.net",
         "CONFLUENCE_USERNAME": "your-email@example.com",
-        "CONFLUENCE_PASSWORD": "your-api-token"
+        "CONFLUENCE_PASSWORD": "your-password"
       }
     }
   }
@@ -95,7 +95,7 @@ Required environment variables:
 
 - `CONFLUENCE_URL`: Your Confluence instance URL (e.g., `https://company.atlassian.net`)
 - `CONFLUENCE_USERNAME`: Your Atlassian account email
-- `CONFLUENCE_PASSWORD`: Your Atlassian API token (create at https://id.atlassian.com/manage-profile/security/api-tokens)
+- `CONFLUENCE_PASSWORD`: Your Atlassian account password
 
 ### Verification
 
@@ -130,7 +130,7 @@ export CONFLUENCE_USERNAME="your-username"
 export CONFLUENCE_PASSWORD="your-api-token"
 ```
 
-> **Note**: Use your Atlassian account email as username and an API token as password. You can create an API token from your Atlassian account settings.
+> **Note**: Use your Atlassian account email as username and password for authentication. Some Confluence instances may require API tokens - check your Confluence authentication method.
 
 ## Usage
 
